@@ -13,6 +13,6 @@
 		$body = $q ['body'];
 		
 		
-		return "<h1><a href=\"view_post.php?id=$postid\">$title</a></h1> <i>by <a href=\"query.php?uid=$author_id\">$author</a></i> ($date)<br /><p>$body</p>";
+		return "<h1><a href=\"query.php?id=$postid\">$title</a></h1> <i>by <a href=\"query.php?uid=$author_id\">$author</a></i> ($date)<br /><p>$body</p>";
 	}
 ?>
