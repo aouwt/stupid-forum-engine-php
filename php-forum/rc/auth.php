@@ -13,7 +13,9 @@
 			
 			
 			if (isset ($_COOKIE ['sess'])) {
-				$DB -> exec ("DELETE FROM tokens WHERE token = '" . $_COOKIE ['sess'] . "';");
+				if (! sanitize_cookie ($_COOKIE ['sess']) {
+					$DB -> exec ("DELETE FROM tokens WHERE token = '" . $_COOKIE ['sess'] . "';");
+				}
 			}
 
 			$tok = auth_gentoken ();

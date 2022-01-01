@@ -34,4 +34,4 @@
 	<button type="submit">Sign up</button>
 </form>
 
-<a href="newacc.php">Existing account</a>
+<a href="/php-forum/login.php">Existing account</a>
