@@ -13,7 +13,7 @@
 			
 			
 			if (isset ($_COOKIE ['sess'])) {
-				if (valid_cookie ($_COOKIE ['sess']) {
+				if (valid_cookie ($_COOKIE ['sess'])) {
 					$DB -> exec ("DELETE FROM tokens WHERE token = '" . $_COOKIE ['sess'] . "';");
 				}
 			}
@@ -27,3 +27,4 @@
 		
 		$_auth_init = true;
 	}
+?>

@@ -10,18 +10,19 @@
 		
 		require 'rc/db.php'; // init db
 		
-		$pass_hash = $DB -> querySingle ("SELECT pass FROM users WHERE uname = '$uname';");
-		
-		if (password_verify (conv ($_POST ['password']), $pass_hash)) {
-			
-			require 'rc/auth.php';
-			
-			auth_authuser (db_getuserid ($uname));
-			echo 'Log-in successful. You are now logged in.';
-			
-		} else {
-			echo 'Invalid password!';
+		if ($DB -> querySingle ("SELECT pass FROM users WHERE uname = '$uname';") != null) {
+			echo 'Invalid username';
+			goto invalid_username;
 		}
+		
+		$id = db_adduser ($uname, $_POST ['password']);
+		
+		
+		require 'rc/auth.php';
+		
+		
+		auth_authuser ($id);
+		echo 'Log-in successful. You are now logged in.';
 	}
 	invalid_username:;
 ?>
