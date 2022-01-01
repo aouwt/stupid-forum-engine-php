@@ -3,7 +3,7 @@
 
 	if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 		$uname = $_POST ['username'];
-		if (sanitize_username ($uname)) {
+		if (! valid_username ($uname)) {
 			echo 'Invalid username';
 			goto invalid_username;
 		}
