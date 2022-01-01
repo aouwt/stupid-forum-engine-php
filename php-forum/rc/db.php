@@ -23,9 +23,17 @@
 			//require 'rc/auth.php';
 			$pass_hash = password_hash ($pass, PASSWORD_ARGON2ID, ['memory_cost' => 4096, 'time_cost' => 14, 'threads' => 1]);
 			
-			$DB -> exec ("INSERT INTO users (id, uname, fname, pass) VALUES ($id, '$uname', '$uname', '$pass_hash');");
+			$DB -> exec ("INSERT INTO users (id, uname, pass) VALUES ($id, '$uname', '$pass_hash');");
 			
 			return $id;
+		}
+		
+		function db_addpost ($uid, $body, $title) {
+			global $DB;
+			
+			$pid = ($DB -> querySingle ("SELECT id FROM posts ORDER BY id DESC;")) + 1;
+			
+			$DB -> exec ("INSERT INTO posts (id, author_id, date, title, body) VALUES ($pid, $uid, " . time () . ", '" . sanitize_str ($title) . "', '" . sanitize_str ($body) . "');");
 		}
 		
 		$_DB_init = true;

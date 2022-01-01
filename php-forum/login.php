@@ -1,6 +1,5 @@
+<?php require 'rc/head.php'; ?>
 <?php
-	require 'rc/common.php';
-
 	if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 		$uname = $_POST ['username'];
 		if (! valid_username ($uname)) {
@@ -10,7 +9,7 @@
 		
 		require 'rc/db.php'; // init db
 		
-		$pass_hash = $DB -> querySingle ("SELECT pass FROM users WHERE uname = '$uname';");
+		$pass_hash = $DB -> querySingle ("SELECT pass FROM users WHERE uname = '$uname';"); //check pass hash
 		
 		if (password_verify (conv ($_POST ['password']), $pass_hash)) {
 			
@@ -35,3 +34,5 @@
 </form>
 
 <a href="/php-forum/newacc.php">New account</a>
+
+<?php require 'rc/foot.php'; ?>

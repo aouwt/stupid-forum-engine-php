@@ -11,5 +11,23 @@
 		return preg_match ('/[^a-zA-Z0-9+\/\-_]/', $cookie) === 0;
 	}
 	
+	function sanitize_str ($str) {
+		return str_replace (array ('<', '>', '&', '"', "'"), array ('&lt;', '&gt;', '&amp;', '&quot;', "''"), $str);
+	}
 	
+	function fmt_date ($date) {
+		$diff = time () - $date;
+		
+		if ($diff < 60) {
+			return "$diff seconds ago";
+		} elseif ($diff < (60*60)) {
+			return ceil ($diff/60) . " minutes ago";
+		} elseif ($diff < (60*60*24)) {
+			return ceil ($diff/(60*60)) . " hours ago";
+		} elseif ($diff < (60*60*24*7)) {
+			return ceil ($diff/(60*60*24)). " days ago";
+		} else {
+			return gmdate ('Y-m-d\TH:i:s\Z', $date);
+		}
+	}
 ?>

@@ -1,6 +1,5 @@
+<?php require 'rc/head.php'; ?>
 <?php
-	require 'rc/common.php';
-
 	if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 		$uname = $_POST ['username'];
 		if (! valid_username ($uname)) {
@@ -36,3 +35,4 @@
 </form>
 
 <a href="/php-forum/login.php">Existing account</a>
+<?php require 'rc/foot.php'; ?>
