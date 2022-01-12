@@ -27,7 +27,7 @@
 		} elseif ($diff < (60*60*24*7)) {
 			return ceil ($diff/(60*60*24)). " days ago";
 		} else {
-			return gmdate ('Y-m-d\TH:i:s\Z', $date);
+			return gmdate ('Y-m-d H:i:s', $date);
 		}
 	}
 ?>
