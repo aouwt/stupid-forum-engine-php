@@ -6,20 +6,27 @@
 	</head>
 	<body>
 		<div class="top_bar">
-			<form action="query.php" method="get">
-				Search: <input type="text" name="q">
-				<button type="submit">go</button>
-			</form>
-			<?php
-				require 'rc/common.php';
-				require 'rc/user.php';
-				
-				if ($loggedin_id === -1) {
-					echo '<a href="login.php">Log in</a>';
-				} else {
-					echo "<a href=\"query.php?uid=$loggedin_id\">" . db_getusername ($loggedin_id) . '</a><a style="margin-left: 10%;" href="post.php">Create a post</a>';
-				}
-			?>
+			<nav>
+				<p>
+					<form action="query.php" method="get">
+						search: <input type="text" name="q">
+						<button type="submit">go</button>
+					</form>
+				</p>
+				<?php
+					require 'rc/common.php';
+					require 'rc/user.php';
+					
+					if ($loggedin_id === -1) {
+						echo '<p>you are not logged in, you should <a href="login.php">do that</a></p>';
+					} else {
+						echo
+							"<p>you're logged in as <a href=\"query.php?uid=$loggedin_id\">" . db_getusername ($loggedin_id) . '</a>, you can <a href="logout.php">log out</a> if you\'d like</p>' .
+							'<p><a href="post.php">post a post</a> via post</p>'
+						;
+					}
+				?>
+			</nav>
 		</div>
 		
 		<hr />

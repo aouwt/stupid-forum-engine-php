@@ -1,7 +1,7 @@
 <?php require 'rc/head.php'; ?>
 <?php
 	if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
-		$uname = $_POST ['username'];
+		$uname = strtolower ($_POST ['username']);
 		if (! valid_username ($uname)) {
 			echo 'Invalid username';
 			goto invalid_username;

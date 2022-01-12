@@ -4,22 +4,38 @@
 		require 'rc/user.php';
 		
 		if ($loggedin_id != -1) {
-			require 'rc/db.php';
+			if (isset ($_POST ['reply'])) {
+				if ($_POST ['text'] === '') {
+					goto end;
+				}
+				
+				
+			} else {
+				if ($_POST ['title'] === '') {
+					echo 'Post title can\'t be empty!';
+					goto end;
+				}
 			
-			db_addpost ($loggedin_id, $_POST ['body'], $_POST ['title']);
 			
-			echo 'Post posted!';
+				require 'rc/db.php';
+				
+				db_addpost ($loggedin_id, $_POST ['body'], $_POST ['title']);
+				
+				echo 'posted!';
+			}
 		}
 	}
+	
+	end:
 ?>
 
 <form action="<?php echo htmlspecialchars ($_SERVER ['PHP_SELF']); ?>" method="post">
-	<label for="title">Post title:</label>
+	<label for="title">title:</label>
 	<input type="text" name="title" id="title">
 	<br />
-	<label for="body">Content:</label>
+	<label for="body">text:</label>
 	<textarea name="body" id="body"></textarea>
 	<br />
-	<button type="submit">Submit</button>
+	<button type="submit">post</button>
 </form>
 <?php require 'rc/foot.php'; ?>

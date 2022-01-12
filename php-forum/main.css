@@ -1,4 +1,19 @@
 .top_bar form {
-	display: inline;
-	margin-right: 10%;
+	display: inline-block;
+}
+
+.top_bar nav {
+	align-items: center;
+	flex-wrap: wrap;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.top_bar {
+	background-image: linear-gradient(rgba(128,0,128,.1),rgba(255,0,255,1));
+	position: sticky;
+	top: 0;
+	width: 100%;
+	margin: 0;
+	border: 1px black solid;
 }
