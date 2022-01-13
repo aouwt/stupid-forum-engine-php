@@ -1,3 +1,4 @@
+<?php setcookie ('refer', $_SERVER ['REQUEST_URI']); ?>
 <!DOCTYPE html>
 <html>
 	<head>

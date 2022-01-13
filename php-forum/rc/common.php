@@ -1,4 +1,19 @@
 <?php
+	function valid_ref ($url) {
+		return $url;
+	}
+	
+	function err ($msg) {
+		if (isset ($_COOKIE ['refer'])) {
+			if (valid_ref ($_COOKIE ['refer'])) {
+				exit (
+					"<p>$msg</p>" .
+					'<meta http-equiv="refresh" content="1; URL=' . $_COOKIE ['refer'] . '" />'
+				);
+			}
+		}
+	}
+	
 	function conv ($str) {
 		return htmlspecialchars (stripslashes (trim ($str)));
 	}

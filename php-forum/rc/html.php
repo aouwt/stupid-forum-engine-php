@@ -1,5 +1,5 @@
 <?php
-	require 'rc/db.php';
+	require 'db.php';
 	
 	function html_renderpost ($postid) {
 		global $DB;

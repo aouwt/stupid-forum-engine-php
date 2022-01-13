@@ -1,6 +1,6 @@
 <?php
 	if (! isset ($_auth_init)) {
-		require 'rc/db.php';
+		require 'db.php';
 		
 		
 		function auth_gentoken () {
