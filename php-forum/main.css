@@ -10,6 +10,11 @@
 	justify-content: space-evenly;
 }
 
+input,button {
+	font-family: serif;
+	border-radius: 0;
+}
+
 .top_bar {
 	background-image: linear-gradient(rgba(128,0,128,.1),rgba(255,0,255,1));
 	position: sticky;
@@ -21,10 +26,15 @@
 	text-shadow: 1pt 1pt white;
 }
 
+.top_bar button:active {
+	rotate: 10deg;
+}
+
 .kitforum {
 	background-image: linear-gradient(rgba(255,255,255,0.1),rgba(255,255,255,0.5));
 	color: white;
 	padding: 6pt;
+	box-shadow: -2px -2px;
 }
 
 h1 {
@@ -33,4 +43,10 @@ h1 {
 	padding: 0.5ch;
 }
 
-h1 a { text-decoration: none; }
+a {
+	text-decoration: none; 
+	font-weight: bold;
+}
+
+a:not(:hover) { text-decoration: none; }
+a:hover { text-decoration: underline; }
