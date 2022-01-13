@@ -10,7 +10,8 @@
 	echo html_renderpost ($pid);
 	echo '<hr />';
 	
-	$r = $DB -> query ("SELECT body, user, date FROM replies WHERE parent = $pid;");
+	
+	$r = $DB -> query ("SELECT body, user, date FROM posts WHERE parent = $pid;");
 	
 loop:
 	$re = $r -> fetchArray (SQLITE3_NUM);
