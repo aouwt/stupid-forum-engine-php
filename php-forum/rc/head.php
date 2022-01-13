@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="main.css">
-		<title>Kitforum</title>
+		<title>kitforum</title>
 	</head>
 	<body>
 		<div class="top_bar">
@@ -16,8 +16,8 @@
 					</form>
 				</p>
 				<?php
-					require 'rc/common.php';
-					require 'rc/user.php';
+					require 'common.php';
+					require 'user.php';
 					
 					if ($loggedin_id === -1) {
 						echo '<p>you are not logged in, you should <a href="login.php">do that</a></p>';

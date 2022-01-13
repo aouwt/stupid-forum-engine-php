@@ -11,7 +11,7 @@
 	echo '<hr />';
 	
 	
-	$r = $DB -> query ("SELECT body, user, date FROM posts WHERE parent = $pid;");
+	$r = $DB -> query ("SELECT body, author_id, date FROM posts WHERE parent = $pid;");
 	
 loop:
 	$re = $r -> fetchArray (SQLITE3_NUM);
@@ -26,13 +26,13 @@ loop:
 	
 done:
 
-	if ($loggedin_id != -1) {
+	if ($loggedin_id !== -1) {
 		echo
-			'<form action="post.php" method=post>' .
-				"<input type=hidden name=reply value=$pid />" .
-				'<label for=reply>reply</label>' .
-				'<textarea name=body id=reply></textarea>' .
-				'<button type=submit>post</button>' .
+			'<form action="post.php" method=post> ' .
+				"<input type=hidden name=reply value=$pid /> " .
+				'<label for=reply>reply:</label><br />' .
+				'<textarea name=body id=reply></textarea> ' .
+				'<button type=submit>post</button> ' .
 			'</form>'
 		;
 	}

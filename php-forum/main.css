@@ -10,7 +10,7 @@
 	justify-content: space-evenly;
 }
 
-input,button {
+input,button,textarea {
 	font-family: serif;
 	border-radius: 0;
 }
