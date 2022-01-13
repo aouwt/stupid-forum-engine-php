@@ -1,6 +1,6 @@
 <?php
 	function valid_ref ($url) {
-		return $url;
+		return sanitize_str ($url) === $url;
 	}
 	
 	function err ($msg) {
@@ -12,6 +12,7 @@
 				);
 			}
 		}
+		exit ("<p>$msg</p>");
 	}
 	
 	function conv ($str) {
