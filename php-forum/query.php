@@ -2,7 +2,7 @@
 <?php
 	require 'rc/html.php';
 	
-	$q = 'SELECT id FROM posts WHERE 1 = 1';
+	$q = 'SELECT id FROM posts WHERE parent IS NULL';
 	
 	if (isset ($_GET ['uid'])) {
 		$t = $_GET ['uid'];

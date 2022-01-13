@@ -19,7 +19,7 @@
 					require 'common.php';
 					require 'user.php';
 					
-					if ($loggedin_id === -1) {
+					if ($loggedin_id == -1) {
 						echo '<p>you are not logged in, you should <a href="login.php">do that</a></p>';
 					} else {
 						echo

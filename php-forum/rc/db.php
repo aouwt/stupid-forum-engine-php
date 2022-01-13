@@ -11,7 +11,8 @@
 		
 		function db_getusername ($id) {
 			global $DB;
-			$un = $DB -> querySingle ("SELECT uname FROM users WHERE id = $id;");
+			
+			$un = $DB -> querySingle ("SELECT uname FROM users WHERE id = $id ;");
 			if ($un === null) {
 				return 'Unknown user';
 			} else {

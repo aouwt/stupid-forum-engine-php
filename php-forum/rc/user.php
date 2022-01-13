@@ -9,6 +9,7 @@
 			if (valid_cookie ($_COOKIE ['sess'])) {
 				$loggedin_id = $DB -> querySingle ("SELECT user FROM tokens WHERE token = '" . $_COOKIE ['sess'] . "';");
 			}
+			if ($loggedin_id === null) { $loggedin_id = -1; }
 		}
 		
 		
