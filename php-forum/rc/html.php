@@ -4,7 +4,7 @@
 	function html_renderpost ($postid) {
 		global $DB;
 		
-		$q = $DB -> querySingle ("SELECT title, author_id, date, body, parent FROM posts WHERE id = $postid;", true);
+		$q = $DB -> querySingle ("SELECT * FROM posts WHERE id = $postid;", true);
 
 		$parent = $q ['parent'];
 		$title = $q ['title'];
@@ -15,6 +15,8 @@
 
 		if ($parent !== null) {
 			$rep = "<i><a href=\"view_post.php?id=$parent\">parent</a></i>";
+		} else {
+			$rep = '';
 		}
 		
 		return

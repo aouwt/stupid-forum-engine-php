@@ -46,4 +46,10 @@
 			return gmdate ('Y-m-d H:i:s', $date);
 		}
 	}
+	
+function console_log( $data ){
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
 ?>

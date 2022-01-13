@@ -4,7 +4,7 @@
 	
 	if (isset ($_GET ['id'])) {
 		$t = $_GET ['id'];
-		if (is_numeric ($t)) { $pid = $t; }
+		if (is_numeric ($t)) { $pid = $t; } else { exit; }
 	}
 
 	echo html_renderpost ($pid);
@@ -28,7 +28,7 @@ done:
 
 	if ($loggedin_id !== -1) {
 		echo
-			'<form action="post.php" method=post> ' .
+			'<form action="rc/mkpost.php" method=post> ' .
 				"<input type=hidden name=reply value=$pid /> " .
 				'<label for=reply>reply:</label><br />' .
 				'<textarea name=body id=reply></textarea> ' .

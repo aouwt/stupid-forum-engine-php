@@ -11,7 +11,7 @@
 		
 		function db_getusername ($id) {
 			global $DB;
-			$un = $DB -> querySingle ("SELECT uname FROM users WHERE id=$id;");
+			$un = $DB -> querySingle ("SELECT uname FROM users WHERE id = $id;");
 			if ($un === null) {
 				return 'Unknown user';
 			} else {
@@ -29,14 +29,14 @@
 			$DB -> exec ("INSERT INTO users (uname, pass) VALUES ('$uname', '$pass_hash');");
 			
 			
-			$id = ($DB -> querySingle ("SELECT id FROM users WHERE uname = $uname;"));
+			$id = ($DB -> querySingle ("SELECT id FROM users WHERE uname = '$uname';"));
 			return $id;
 		}
 		
-		function db_addpost ($uid, $body, $title) {
+		function db_addpost ($uid, $body, $title, $parent = 'NULL') {
 			global $DB;
 			
-			$DB -> exec ("INSERT INTO posts (author_id, date, title, body) VALUES ($uid, " . time () . ", '" . sanitize_str ($title) . "', '" . sanitize_str ($body) . "');");
+			$DB -> exec ("INSERT INTO posts (parent, author_id, date, title, body) VALUES ($parent, $uid, " . time () . ", '" . sanitize_str ($title) . "', '" . sanitize_str ($body) . "');");
 		}
 		
 		$_DB_init = true;
