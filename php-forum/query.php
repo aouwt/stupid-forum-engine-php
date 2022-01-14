@@ -2,7 +2,7 @@
 <?php
 	require 'rc/html.php';
 	
-	$q = 'SELECT id FROM posts WHERE parent IS NULL';
+	$q = 'SELECT id FROM posts WHERE 1 = 1';
 	
 	if (isset ($_GET ['uid'])) {
 		$t = $_GET ['uid'];
@@ -22,12 +22,18 @@
 	
 	$r = $DB -> query ($q . " ORDER BY date DESC;");
 	
-loop:
 	$pid = $r -> fetchArray (SQLITE3_NUM);
-	if ($pid === false) { goto done; }
-	
+	if ($pid === false) {
+		echo '<p style="text-align:center; font-style:oblique;">there is no content to display</p>';
+		goto done;
+	}
+loop:
 	echo html_renderpost ($pid [0]);
 	echo '<hr />';
+
+	$pid = $r -> fetchArray (SQLITE3_NUM);
+	if ($pid === false) { goto done; }
+
 	goto loop;
 	
 done:

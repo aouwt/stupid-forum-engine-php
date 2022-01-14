@@ -14,7 +14,7 @@
 		$body = $q ['body'];
 
 		if ($parent !== null) {
-			$rep = "<i><a href=\"view_post.php?id=$parent\">parent</a></i>";
+			$rep = "<i>replying to <a href=\"view_post.php?id=$parent\">" . db_getposttitle ($parent) . '</a></i>';
 		} else {
 			$rep = '';
 		}

@@ -3,13 +3,17 @@
 		return sanitize_str ($url) === $url;
 	}
 	
-	function err ($msg) {
+	function err ($msg = '') {
 		if (isset ($_COOKIE ['refer'])) {
 			if (valid_ref ($_COOKIE ['refer'])) {
-				exit (
-					"<p>$msg</p>" .
-					'<meta http-equiv="refresh" content="1; URL=' . $_COOKIE ['refer'] . '" />'
-				);
+				if ($msg === '') {
+					exit ('<meta http-equiv="refresh" content="0; URL=' . $_COOKIE ['refer'] . '" />');
+				} else {
+					exit (
+						"<p>$msg</p>" .
+						'<meta http-equiv="refresh" content="1; URL=' . $_COOKIE ['refer'] . '" />'
+					);
+				}
 			}
 		}
 		exit ("<p>$msg</p>");
@@ -28,7 +32,7 @@
 	}
 	
 	function sanitize_str ($str) {
-		return str_replace (array ('<', '>', '&', '"', "'"), array ('&lt;', '&gt;', '&amp;', '&quot;', "''"), $str);
+		return str_replace (array ('\'', "\n\n", "\r", "\n"), array ('\'\'', '<br />', '', ' '), $str);
 	}
 	
 	function fmt_date ($date) {

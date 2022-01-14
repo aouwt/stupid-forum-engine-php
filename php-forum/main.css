@@ -26,10 +26,6 @@ input,button,textarea {
 	text-shadow: 1pt 1pt white;
 }
 
-.top_bar button:active {
-	rotate: 10deg;
-}
-
 .kitforum {
 	background-image: linear-gradient(rgba(255,255,255,0.1),rgba(255,255,255,0.5));
 	color: white;
@@ -47,6 +43,14 @@ a {
 	text-decoration: none; 
 	font-weight: bold;
 }
+
+.reply {
+	display: flex;
+	align-items: center;
+}
+
+.reply p#name { margin-right: 1ch;}
+.reply p#content br { line-height: 200%; }
 
 a:not(:hover) { text-decoration: none; }
 a:hover { text-decoration: underline; }

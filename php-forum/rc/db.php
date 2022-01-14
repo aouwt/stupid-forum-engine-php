@@ -1,7 +1,7 @@
 <?php
 	if (! isset ($_DB_init)) {
 		$DB = new SQLite3 ('/usr/share/cgi-data/forum/stuff.db');
-		
+		require 'md.php';
 		
 		function db_getuserid ($uname) {
 			global $DB;
@@ -21,6 +21,13 @@
 		}
 		
 		
+		function db_getposttitle ($id) {
+			global $DB;
+			
+			return $DB -> querySingle ("SELECT title FROM posts WHERE id = $id ;");
+		}
+		
+		
 		function db_adduser ($uname, $pass) {
 			global $DB;
 			
@@ -37,7 +44,13 @@
 		function db_addpost ($uid, $body, $title, $parent = 'NULL') {
 			global $DB;
 			
-			$DB -> exec ("INSERT INTO posts (parent, author_id, date, title, body) VALUES ($parent, $uid, " . time () . ", '" . sanitize_str ($title) . "', '" . sanitize_str ($body) . "');");
+			if ($title === '') {
+				$title = 'RE: ' . db_getposttitle ($parent);
+			} else {
+				$title = md_fmt ($title);
+			}
+			
+			$DB -> exec ("INSERT INTO posts (parent, author_id, date, title, body) VALUES ($parent, $uid, " . time () . ", '" . $title . "', '" . md_fmt ($body) . "');");
 		}
 		
 		$_DB_init = true;

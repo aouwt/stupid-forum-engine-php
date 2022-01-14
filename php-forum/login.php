@@ -1,3 +1,6 @@
+<?php
+	$noredir = true;
+?>
 <?php require 'rc/head.php'; ?>
 <form method="post" action="rc/login.php">
 	<label for="uname">Username:</label>

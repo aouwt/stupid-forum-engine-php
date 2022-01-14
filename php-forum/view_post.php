@@ -19,8 +19,8 @@ loop:
 	
 	echo
 		'<div class="reply">' .
-			'<p><a href="query.php?uid=' . $re [1] . '">' . db_getusername ($re [1]) . '</a> ' . fmt_date ($re [2]) . ': ' . $re [0] . '</p>';
-		'<hr />'
+			'<p id="name"><a href="query.php?uid=' . $re [1] . '">' . db_getusername ($re [1]) . '</a>, ' . fmt_date ($re [2]) . ':</p> <p id="content">' . $re [0] . '</p>' .
+		'</div>'
 	;
 	goto loop;
 	

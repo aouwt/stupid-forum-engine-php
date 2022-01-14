@@ -1,0 +1,3 @@
+[submodule "php-forum/rc/parsedown"]
+	path = php-forum/rc/parsedown
+	url = https://github.com/erusev/parsedown

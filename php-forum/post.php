@@ -1,3 +1,6 @@
+<?php 
+	$noredir = true;
+?>
 <?php require 'rc/head.php'; ?>
 <form action="rc/mkpost.php" method="post">
 	<label for="title">title:</label>
