@@ -19,7 +19,7 @@ loop:
 	
 	echo
 		'<div class="reply">' .
-			'<p id="name"><a href="query.php?uid=' . $re [1] . '">' . db_getusername ($re [1]) . '</a>, ' . fmt_date ($re [2]) . ':</p> <p id="content">' . $re [0] . '</p>' .
+			'<p id="name">' . html_renderusername ($re [1]) . ', ' . fmt_date ($re [2]) . ':</p> <p id="content">' . $re [0] . '</p>' .
 		'</div>'
 	;
 	goto loop;

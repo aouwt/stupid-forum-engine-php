@@ -20,6 +20,13 @@
 			}
 		}
 		
+		function db_getpronouns ($id) {
+			global $DB;
+			
+			$un = $DB -> querySingle ("SELECT prns FROM users WHERE id = $id ;");
+			return $un;
+		}
+		
 		
 		function db_getposttitle ($id) {
 			global $DB;
@@ -32,7 +39,7 @@
 			global $DB;
 			
 			
-			$pass_hash = password_hash ($pass, PASSWORD_ARGON2ID, ['memory_cost' => 4096, 'time_cost' => 14, 'threads' => 1]);
+			$pass_hash = password_hash ($pass, PASSWORD_ARGON2ID, ['memory_cost' => 8096, 'time_cost' => 14, 'threads' => 1]);
 			
 			$DB -> exec ("INSERT INTO users (uname, pass) VALUES ('$uname', '$pass_hash');");
 			

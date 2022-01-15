@@ -18,13 +18,14 @@
 				<?php
 					require 'common.php';
 					require 'user.php';
+					require 'html.php';
 					
 					if ($loggedin_id == -1) {
 						echo '<p><a href="login.php">log in</a></p>';
 					} else {
 						echo
-							"<p>logged in as <a href=\"query.php?uid=$loggedin_id\">" . db_getusername ($loggedin_id) . '</a></p>' .
-							"<p><a href=\"logout.php\">log out</a></p>" .
+							'<p>logged in as ' . html_renderusername ($loggedin_id) . '</p>' .
+							'<p><a href="logout.php">log out</a></p>' .
 							'<p><a href="post.php">post</a></p>'
 						;
 					}
