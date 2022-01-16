@@ -12,7 +12,7 @@
 		function db_getusername ($id) {
 			global $DB;
 			
-			$un = $DB -> querySingle ("SELECT uname FROM users WHERE id = $id ;");
+			$un = $DB -> querySingle ("SELECT uname FROM users WHERE id = $id;");
 			if ($un === null) {
 				return 'Unknown user';
 			} else {
@@ -23,10 +23,17 @@
 		function db_getpronouns ($id) {
 			global $DB;
 			
-			$un = $DB -> querySingle ("SELECT prns FROM users WHERE id = $id ;");
+			$un = $DB -> querySingle ("SELECT prns FROM users WHERE id = $id;");
 			return $un;
 		}
 		
+		
+		function db_getuserinfo ($id) {
+			global $DB;
+			
+			$ui = $DB -> querySingle ("SELECT id, uname, prns FROM users WHERE id = $id;", true);
+			return $ui;
+		}
 		
 		function db_getposttitle ($id) {
 			global $DB;
@@ -52,7 +59,7 @@
 			global $DB;
 			
 			if ($title === '') {
-				$title = 'RE: ' . db_getposttitle ($parent);
+				$title = db_getposttitle ($parent);
 			} else {
 				$title = md_fmt ($title);
 			}

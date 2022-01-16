@@ -19,15 +19,12 @@
 			$author_id = $q ['author_id'];
 			$date = fmt_date ($q ['date']);
 			$body = $q ['body'];
-
-			if ($parent !== null) {
-				$rep = "<i>replying to <a href=\"view_post.php?id=$parent\">" . db_getposttitle ($parent) . '</a></i>';
-			} else {
-				$rep = '';
-			}
 			
+			if ($parent !== null) {
+				$title = "RE: <a href=\"view_post.php?id=$parent\">$title</a>";
+			}
+
 			return
-				$rep .
 				"<h1><a href=\"view_post.php?id=$postid\">$title</a></h1> " .
 				'<i>by ' . html_renderusername ($author_id) . "</i> ($date)<br /> " .
 				"<p>$body</p>"

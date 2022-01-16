@@ -25,7 +25,8 @@
 	
 	$i = 0;
 	while ($re = $r -> fetchArray (SQLITE3_ASSOC)) {
-		$re ['uname'] = db_getusername ($re ['author_id']);
+		$re ['author'] = db_getuserinfo ($re ['author_id']);
+		unset ($re ['author_id']);
 		$json ['results'] [$i ++] = $re;
 	}
 	

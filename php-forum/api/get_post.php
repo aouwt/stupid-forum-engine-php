@@ -6,13 +6,14 @@
 	
 	$r = $DB -> querySingle ("SELECT * FROM posts WHERE id = $pid;", true);
 	
-	$json = $r;
+	$json ['post'] = $r;
 	$json ['replies'] = array ();
 	
 	$rep = $DB -> query ("SELECT * FROM posts WHERE parent = $pid");
 	$i = 0;
 	while ($re = $rep -> fetchArray (SQLITE3_ASSOC)) {
-		$re ['uname'] = db_getusername ($re ['author_id']);
+		$re ['author'] = db_getuserinfo ($re ['author_id']);
+		unset ($re ['author_id']);
 		$json ['replies'] [$i ++] = $re;
 	}
 	
