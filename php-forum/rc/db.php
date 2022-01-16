@@ -46,7 +46,7 @@
 			global $DB;
 			
 			
-			$pass_hash = password_hash ($pass, PASSWORD_ARGON2ID, ['memory_cost' => 8096, 'time_cost' => 14, 'threads' => 1]);
+			$pass_hash = passhash ($pass);
 			
 			$DB -> exec ("INSERT INTO users (uname, pass) VALUES ('$uname', '$pass_hash');");
 			

@@ -6,21 +6,22 @@
 
 <form action="rc/settings.php" method="post">
 	<fieldset>
-		<legend>User options</legend>
+		<legend>user options</legend>
 		<label for="pronouns">my pronouns are:</label>
 		<input type="text" name="pronouns" id="pronouns" value="<?php echo db_getpronouns ($loggedin_id); ?>" />
-		<br />
-		
-		<!--<label for="username">Change username:</label>
-		<input type="text" id="username" name="username" value="<?php echo db_getusername ($loggedin_id); ?>" />-->
 	</fieldset>
-	<hr />
+	<br />
 	<fieldset>
-		<legend>Change password</legend>
-		<label for="newpass">new password</label>
+		<legend>change password</legend>
+		<label for="newpass">new password: </label>
 		<input type="password" name="newpass" id="newpass" />
 		<br />
-		<label for="oldpass">old password</label>
+		<label for="newpass_2">confirm new password: </label>
+		<input type="password" name="newpass_2" id="newpass_2" />
+		<br /><br />
+		<label for="oldpass">old password: </label>
 		<input type="password" name="oldpass" id="oldpass" />
 	</fieldset>
+	<br />
+	<button type="submit">apply changes</button>
 </form>

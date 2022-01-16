@@ -51,6 +51,8 @@
 		}
 	}
 	
+	function passhash ($pass) { return password_hash ($pass, PASSWORD_ARGON2ID, ['memory_cost' => 8096, 'time_cost' => 14, 'threads' => 1]); }
+	
 function console_log( $data ){
   echo '<script>';
   echo 'console.log('. json_encode( $data ) .')';

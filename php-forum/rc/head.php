@@ -26,7 +26,8 @@
 						echo
 							'<p>logged in as ' . html_renderusername ($loggedin_id) . '</p>' .
 							'<p><a href="logout.php">log out</a></p>' .
-							'<p><a href="post.php">post</a></p>'
+							'<p><a href="post.php">post</a></p>' .
+							'<p><a href="settings.php">options</a></p>'
 						;
 					}
 				?>
