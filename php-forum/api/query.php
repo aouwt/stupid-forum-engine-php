@@ -19,6 +19,11 @@
 		$t = conv (sanitize_str ($_GET ['q']));
 		$q .= " AND (body LIKE '%$t%' OR title LIKE '%$t%')";
 	}
+	
+	if (isset ($_GET ['parent']) {
+		$t = $_GET ['parent'];
+		if (is_numeric ($t)) { $q .= " AND parent = $t"; }
+	}
 		
 	
 	$r = $DB -> query ($q . " ORDER BY date DESC;");

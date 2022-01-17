@@ -8,7 +8,7 @@
 	<body>
 		<div class="top_bar">
 			<nav>
-				<p class="kitforum"><a href="query.php">kitforum</a></p>
+				<p class="kitforum"><a href="index.php">kitforum</a></p>
 				<p>
 					<form action="query.php" method="get">
 						search: <input type="text" name="q">

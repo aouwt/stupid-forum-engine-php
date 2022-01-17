@@ -19,7 +19,7 @@
 			}
 
 			$tok = auth_gentoken ();
-			$expiry = time () + (60*60*24*30);
+			$expiry = time () + (60*60*24*7);
 			
 			setcookie ('sess', $tok, $expiry, "/php-forum/");
 			$DB -> exec ("INSERT INTO tokens (user, token, expiry) VALUES ($id, '$tok', $expiry);");

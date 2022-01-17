@@ -4,6 +4,12 @@
 	
 	$q = 'SELECT id FROM posts WHERE 1 = 1';
 	
+	if (isset ($_index)) {
+		$q .= ' AND parent IS NULL';
+		goto startq; // skip arg parsing
+	}
+	
+	
 	if (isset ($_GET ['uid'])) {
 		$t = $_GET ['uid'];
 		if (is_numeric ($t)) { $q .= " AND author_id = $t"; }
@@ -18,9 +24,16 @@
 		$t = conv (sanitize_str ($_GET ['q']));
 		$q .= " AND (body LIKE '%$t%' OR title LIKE '%$t%')";
 	}
-		
 	
-	$r = $DB -> query ($q . " ORDER BY date DESC;");
+	if (isset ($_GET ['parent'])) {
+		$t = $_GET ['parent'];
+		if (is_numeric ($t)) { $q .= " AND parent = $t"; }
+		if ($t === 'none')   { $q .= ' AND parent IS NULL'; }
+	}	
+	
+
+startq:
+	$r = $DB -> query ($q . ' ORDER BY date DESC;');
 	
 	$pid = $r -> fetchArray (SQLITE3_NUM);
 	if ($pid === false) {
