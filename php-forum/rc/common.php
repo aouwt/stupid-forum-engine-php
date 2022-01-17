@@ -32,7 +32,11 @@
 	}
 	
 	function sanitize_str ($str) {
-		return str_replace (array ('\'', "\n\n", "\r", "\n"), array ('\'\'', '<br />', '', ' '), $str);
+		return str_replace (
+			array ('\'',	"\n",		"\r"),
+			array ('\'\'',	'<br/>',	''),
+			$str
+		);
 	}
 	
 	function fmt_date ($date) {
